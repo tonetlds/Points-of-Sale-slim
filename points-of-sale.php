@@ -1,23 +1,25 @@
 <?php
 
 /**
- * POINTS OF SALE (MANTO MÓVEIS)
+ * POINTS OF SALE slim
  *
- * @link              https://
- * @since             1.0.0
+ * @link              https://github.com/tonetlds/Points-of-Sale-slim
+ * @since             1.0.1
  * @package           Points_Of_Sale
  *
  * @wordpress-plugin
- * Plugin Name:       Points Of Sale (Manto Móveis)
- * Plugin URI:        https://github.com/tonetlds/Points-of-Sale
- * Description:       Lista de pontos de venda. Versão exclusiva Manto Móveis
- * Version:           1.0.0
+ * Plugin Name:       Points Of Sale slim
+ * Plugin URI:        https://github.com/tonetlds/Points-of-Sale-slim
+ * Description:       Lista pontos de venda. Versão resumida de tonetlds/Points-of-Sale
+ * Version:           1.0.1
  * Author:            Luciano Tonet
  * Author URI:        https://lucianotonet.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       points-of-sale
  * Domain Path:       /languages
+ * GitHub Plugin URI: https://github.com/tonetlds/Points-of-Sale-slim
+ * GitHub Branch:     master
  */
 
 // If this file is called directly, abort.
