@@ -1,26 +1,34 @@
 <li class="pos_list-item">
-	<table>
+	<table border="1" bordercolor="red">
 		<tbody>
 			<tr>
+				<td width="50">							
+					<?php 
+						if ( count( $point_of_sale->_pos_marker ) ) {
+							foreach ( $point_of_sale->_pos_marker as $image ) { ?>
+					    		<img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>" class="pos_marker"/>
+					<?php 	}							
+						}else{ ?>
+							<a class="icon pos-marker"></a>
+					<?php } ?>
+				</td>
 				<td align="left">
-					<h4 class="title-rep">
+					<h4 class="">
 						<?php echo $point_of_sale->post_title ?>
 					</h4>					
 					<address class="pos_address">	
-						Representante: <?php echo $point_of_sale->_pos_street ?><br> 				
+						<?php echo $point_of_sale->_pos_street ?>, <?php echo $point_of_sale->_pos_number ?><br>
+						<?php echo $point_of_sale->_pos_neighborhood ?> - <?php echo $point_of_sale->_pos_city ?> / <?php echo $point_of_sale->_pos_state ?>
 					</address>		
-					<small class="pos_contacts">
-						<?php if( !empty($point_of_sale->_pos_number) ){ ?>						
-							<?php echo $point_of_sale->_pos_number ?>					
-						<?php } ?>
-						<?php if( !empty($point_of_sale->_pos_phone) ){ ?>						
-							<?php echo "/ {$point_of_sale->_pos_phone}" ?><br>							
-						<?php } ?>
-					</small>	
-					<?php if( !empty($point_of_sale->_pos_email) ){ ?>						
+
+					<?php if( !empty($point_of_sale->_pos_phone) or !empty($point_of_sale->_pos_email) or !empty($point_of_sale->_pos_more_info) ){ ?>						
 						<small class="pos_contacts">
+							<?php if( !empty($point_of_sale->_pos_phone) ) ?>
+								<i class="fa fa-phone-square"></i><?php echo $point_of_sale->_pos_phone ?>
 							<?php if( !empty($point_of_sale->_pos_email) ) ?>
-								<a class="email-representante" href='mailto:<?php echo $point_of_sale->_pos_email ?>'><?php echo $point_of_sale->_pos_email ?></a> 
+								<a href="#"><i class="fa fa-envelope-square"></i><?php echo $point_of_sale->_pos_email ?></a> 
+							<?php if( !empty($point_of_sale->_pos_more_info) ) ?>
+								<i class="fa fa-globe"></i><?php echo $point_of_sale->_pos_more_info ?> 							
 						</small>							
 					<?php } ?>
 				</td>

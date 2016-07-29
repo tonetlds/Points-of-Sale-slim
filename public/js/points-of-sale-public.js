@@ -29,22 +29,22 @@
 	 * be doing this, we should try to minimize doing that in our own work.
 	 */
 	jQuery(document).ready(function($) {
-
+	
 		var pos_form_filters			= $('form#pos_filters');
 
 		var pos_dropdown_states 		= $('select#pos_states');
 		var pos_dropdown_cities 		= $('select#pos_cities');
 		var pos_dropdown_neighborhoods  = $('select#pos_neighborhoods');
 
-		var pos_loading  				= $('.pos_loading');
+		var pos_loading  				= $('.pos_loading');	
 
-		var pos_results					= $('#pos_results');
+		var pos_results					= $('#pos_results');	
 
 
 		/* ------------------------------------ */
 		/*  BUILD
-		/* ------------------------------------ */
-	    var states = pos_data.pos_states;
+		/* ------------------------------------ */    
+	    var states = pos_data.pos_states;      
 
 	    pos_dropdown_cities.hide();
 	    pos_dropdown_neighborhoods.hide();
@@ -54,7 +54,7 @@
 	    	pos_dropdown_states.append( $("<option />").val( val._pos_state ).text( val._pos_state ) );
 	    });
 
-
+		
 		/* ------------------------------------ */
 		/*  STATES DOPDOWN
 		/* ------------------------------------ */
@@ -64,7 +64,7 @@
 			pos_dropdown_cities.value = null;
 			pos_dropdown_cities.children('option').remove();
 			pos_dropdown_cities.hide();
-
+			
 			pos_dropdown_neighborhoods.value = null;
 			pos_dropdown_neighborhoods.children('option').remove();
 			pos_dropdown_neighborhoods.hide();
@@ -76,7 +76,7 @@
 
 			$.ajax({
 				url: pos_data.ajaxurl,
-				type: 		'POST',
+				type: 		'POST',			
 				dataType: 	'json',
 				data: {
 					action: 	'pos_getpoints',
@@ -84,32 +84,29 @@
 				},
 			})
 			.done(function( response ) {
+				// console.log( response );
 
-				console.log( response );
-				if( response.cities ){
+				if( response.cities.length != pos_dropdown_cities.length ){
 
-					if( response.cities.length != pos_dropdown_cities.length ){
+					pos_dropdown_cities.children('option').remove();
 
-						pos_dropdown_cities.children('option').remove();
+					$.each( response.cities, function(index, val) {
+				    	pos_dropdown_cities.append( $("<option />").val( val._pos_city ).text( val._pos_city ) );
+				    });
 
-						$.each( response.cities, function(index, val) {
-					    	pos_dropdown_cities.append( $("<option />").val( val._pos_city ).text( val._pos_city ) );
-					    });
+				    pos_dropdown_cities.prepend( $("<option />").val( null ).text( 'Selecione a cidade:' ) );
 
-					    pos_dropdown_cities.prepend( $("<option />").attr('selected', 'selected').val( null ).text( 'Selecione uma região:' ) );
-
-					    pos_dropdown_cities.show();
-					}
-
+				    pos_loading.hide();
+				    pos_dropdown_cities.show();
 				}
-				pos_loading.hide();
+					
 
 			})
 			.fail(function() {
 				console.log("Erro!");
-			});
-
-		});
+			});			
+			
+		});	
 
 
 		/* ------------------------------------ */
@@ -129,7 +126,7 @@
 
 			$.ajax({
 				url: pos_data.ajaxurl,
-				type: 		'POST',
+				type: 		'POST',			
 				dataType: 	'json',
 				data: {
 					action: 	'pos_getpoints',
@@ -137,7 +134,7 @@
 					pos_city:   pos_dropdown_cities.val()
 				},
 			})
-			.done(function( response ) {
+			.done(function( response ) {			
 
 				pos_dropdown_neighborhoods.children('option').remove();
 
@@ -148,19 +145,19 @@
 			    pos_dropdown_neighborhoods.prepend( $("<option />").val( null ).text( 'Selecione o bairro:' ) );
 
 			    pos_loading.hide();
-
+			    
 			    if( Object.keys( response.neighborhoods ).length > 1 ){
 			    	pos_dropdown_neighborhoods.show();
 			    };
-
+			    
 			    pos_show_points();
-
+				
 			})
 			.fail(function() {
 				console.log("Erro!");
-			});
-
-		});
+			});			
+			
+		});	
 
 
 		/* ------------------------------------ */
@@ -174,7 +171,7 @@
 
 			$.ajax({
 				url: pos_data.ajaxurl,
-				type: 		'POST',
+				type: 		'POST',			
 				dataType: 	'json',
 				data: {
 					action: 			'pos_getpoints',
@@ -183,36 +180,36 @@
 					pos_neighborhood:   pos_dropdown_neighborhoods.val()
 				},
 			})
-			.done(function( response ) {
+			.done(function( response ) {			
 
 				// pos_results.html('');
 
 				// $.each( response.points_of_sale, function(index, val) {
-
+					
 				// 	var pos_add_cont  = "<strong>"+val.post_title+"</strong><br />";
 				// 		pos_add_cont += "<em>"+val._pos_city+"</em><br />";
 				// 	var pos_address	= $('<address>').html( pos_add_cont );
 
 				// 	pos_results.append( pos_address );
-
+			    	
 			 //    });
 
 			 //    pos_loading.hide();
 			 //    pos_results.show();
-
+				
 			})
 			.fail(function() {
 				console.log("Erro!");
-			});
+			});			
 
 
 
 
+							
 
 
-
-
-		});
+			
+		});	
 
 
 		/**
@@ -225,7 +222,7 @@
 			 */
 			$.ajax({
 				url: pos_data.ajaxurl,
-				type: 		'POST',
+				type: 		'POST',			
 				dataType: 	'html',
 				data: {
 					action: 			'pos_listpoints',
@@ -234,9 +231,9 @@
 					pos_neighborhood:   pos_dropdown_neighborhoods.val()
 				},
 			})
-			.done(function( response ) {
+			.done(function( response ) {	
 
-				// console.log( response );
+				// console.log( response );		
 
 	   			pos_results.html( response  );
 	   			pos_results.show();
@@ -245,13 +242,13 @@
 				// $.each( response.points_of_sale, function(index, val) {
 				// 	pos_results.append( val.point_of_sale );
 				// });
-
+				
 			})
 			.fail(function() {
 				console.log("Erro on GET LIST OF POINTS VIA AJAX!");
 			});
 		}
-
-	});
+		
+	});	
 
 })( jQuery );

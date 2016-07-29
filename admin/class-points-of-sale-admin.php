@@ -295,25 +295,47 @@ class Points_Of_Sale_Admin {
                 		'id'   => $prefix . 'state',
                 		'type' => 'text'),
 			    array(
-                		'name' => __('Região','points_of_sale'),                		
+                		'name' => __('Cidade','points_of_sale'),                		
                 		'id'   => $prefix . 'city',
                 		'type' => 'text'),
 			    array(
-                		'name' => __('Nome do representante','points_of_sale'),                		
+                		'name' => __('Bairro','points_of_sale'),                		
+                		'id'   => $prefix . 'neighborhood',
+                		'type' => 'text'),
+			    array(
+                		'name' => __('Rua','points_of_sale'),                		
                 		'id'   => $prefix . 'street',
                 		'type' => 'text'),
 			    array(
-                		'name' => __('Número Telefone 1','points_of_sale'),                		
+                		'name' => __('Número','points_of_sale'),                		
                 		'id'   => $prefix . 'number',
                 		'type' => 'text'),
 			    array(
-                		'name' => __('Número Telefone 2','points_of_sale'),                		
-                		'id'   => $prefix . 'phone',
-                		'type' => 'text'), 
+                		'name' => __('CEP','points_of_sale'),                		
+                		'id'   => $prefix . 'postal_code',
+                		'type' => 'text'),
+
                 array(
                 		'name' => __('E-mail','points_of_sale'),                		
                 		'id'   => $prefix . 'email',
-                		'type' => 'text'), 
+                		'type' => 'text'),
+                array(
+                		'name' => __('Telefone','points_of_sale'),                		
+                		'id'   => $prefix . 'phone',
+                		'type' => 'text'),
+                array(
+						'name' => __( 'Marcador', 'points_of_sale' ),						
+						'id'   => $prefix . 'marker',
+						'type' => 'image_advanced',
+                		'max_file_uploads' => 1),
+                // array(
+                // 		'name' => __('Latitude','points_of_sale'),                		
+                // 		'id'   => $prefix . 'latitude',                		
+                // 		'type' => 'text'),
+                // array(
+                // 		'name' => __('Longitude','points_of_sale'),                		
+                // 		'id'   => $prefix . 'longitude',
+                // 		'type' => 'text'),    
                    				
 			),
 		);
