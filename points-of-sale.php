@@ -11,7 +11,7 @@
  * Plugin Name:       Points Of Sale slim
  * Plugin URI:        https://github.com/tonetlds/Points-of-Sale-slim
  * Description:       Lista pontos de venda. Versão resumida de tonetlds/Points-of-Sale
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Luciano Tonet
  * Author URI:        https://lucianotonet.com
  * License:           GPL-2.0+
